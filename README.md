@@ -54,6 +54,46 @@ python PythagorasTree.py 10
 ## Task 3. Trees, Dijkstra's Algorithm
 Develop Dijkstra's algorithm to find the shortest paths in a weighted graph using a binary heap. The task includes creating a graph, using a heap to optimize vertex selection, and calculating the shortest paths from the starting vertex to all others.
 
+### Solution
+The Dijkstra's algorithm to find the shortest paths in a weighted graph using a binary heap is implemented in file ```DijkstraOnHeap.py```.\
+Function ```dijkstra_on_heap``` gets input:
+ - graph: the graph to work with
+ - start: the vertex to start from
+
+Returns:
+ - dictionary: minimal distances from the 'start' to each vertex in the graph
+
+Function ```find_all_distances``` finds all minimal distances between all vertexes in the given graph using ```dijkstra_on_heap```.\
+Input:
+ - graph: the graph to work with
+
+Return:
+ - dictionary: minimal distances from each vertex to each vertex in the graph
+
+#### Usage
+```python
+import networkx as nx
+import pandas as pd
+from DijkstraOnHeap import *
+
+graph = nx.Graph()
+graph.add_nodes_from(["A", "B", "C", "D"])
+graph.add_edge("A", "B", weight=1)
+graph.add_edge("A", "C", weight=5)
+graph.add_edge("C", "B", weight=3)
+graph.add_edge("C", "D", weight=10)
+
+print(pd.DataFrame( find_all_distances(graph) ))
+```
+#### Output
+```
+    C   A   B   D
+A   4   0   1  14
+B   3   1   0  13
+C   0   4   3  10
+D  10  14  13   0
+```
+
 ## Task 4. Pyramid Visualization
 The following code builds binary trees. Analyze the code to understand how it works.
 ```python
