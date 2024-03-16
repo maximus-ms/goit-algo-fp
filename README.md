@@ -153,15 +153,14 @@ draw_tree(root)
 Using this code, build a function that visualizes a binary heap.
 
 ### Solution
-The function ```draw_heap``` is implemented in file ```HeapVisualizer.py```.
+The function ```draw_heap``` is implemented in file ```HeapTree.py```.
 #### Usage
 ```python
-from HeapVisualizer import draw_heap
+from HeapTree import HeapTree
 
-data = list(random.randint(99, size=26))
-heapq.heapify(data)
-print(f"Heap: {data}")
-draw_heap(data)
+ht = HeapTree(random.randint(99, size=26))
+print(f"HeapTree: {ht}")
+ht.show()
 ```
 #### Result
 ![Heap Visualizer](data/HeapVisualizer.png)
