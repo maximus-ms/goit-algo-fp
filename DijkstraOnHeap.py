@@ -18,11 +18,14 @@ class MinPriorityQueue:
             else:
                 self.q = q
 
-    def push(self, priority, data):
-        heapq.heappush(self.q, (priority, data))
+    def push(self, priority_data):
+        heapq.heappush(self.q, priority_data)
 
     def pop(self):
-        return heapq.heappop(self.q)[1]
+        item = heapq.heappop(self.q)
+        if isinstance(item, (list, set)):
+            item = item[1]
+        return item
 
     def update(self):
         heapq.heapify(self.q)
