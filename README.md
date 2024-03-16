@@ -206,13 +206,13 @@ from HeapTree import HeapTree
 
 ht = HeapTree(random.randint(99, size=22))
 print(f"HeapTree: {ht}")
-print(f"DBS order: {ht.bfs()}")
+print(f"BFS order: {ht.bfs()}")
 ht.show()
 ```
 #### Results
 ```
 HeapTree: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
-DBS order: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
+BFS order: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
 ```
 ![Heap Visualizer DFS](data/HeapVisualizerBfs.png)
 
