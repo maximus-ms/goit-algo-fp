@@ -110,19 +110,15 @@ class LinkedList:
             self.head = other_sorted_ll.head
             return self
 
-        cur1 = self.head
         cur2 = other_sorted_ll.head
         while cur2 and (self.head.data > cur2.data):
             t = self.head
-            self.head = cur2
-            cur2 = cur2.next
+            self.head, cur2 = cur2, cur2.next
             self.head.next = t
-        prev = self.head
-        cur1 = self.head.next
+        prev, cur1 = self.head, self.head.next
         while cur1 and cur2:
             if cur1.data > cur2.data:
-                t = cur2
-                cur2 = cur2.next
+                t, cur2 = cur2, cur2.next
                 t.next = cur1
                 prev.next = t
             else:
@@ -143,45 +139,14 @@ class LinkedList:
 
 if __name__ == "__main__":
     llist = LinkedList()
+    llist.insert_from([2, 3, 3, 1, 2, 3, 4])
+    print(f"Current LL:            {llist}")
+    print(f"Sorted LL (inplace):   {llist.sort()}")
+    print(f"Reversed LL (new LL):  {llist.reverse()}")
+    print(f"Reversed LL (inplace): {llist.reverse(inplace=True)}")
+    print(f"Sorted LL (inplace):   {llist.sort()}")
 
-    # llist.insert_at_beginning(5)
-    # llist.insert_at_beginning(10)
-    # llist.insert_at_beginning(10)
-    # llist.insert_at_beginning(15)
-    # llist.insert_at_end(20)
-    # llist.insert_at_end(25)
-    # llist.insert_at_end(10)
-
-    # print(f"Current LL:            {llist}")
-
-    # llist.delete_node(10)
-
-    # print(f"LL after delete [10]:  {llist}")
-
-    # node = llist.search_node(15)
-    # print(f"Search node [15]: {node.data if node else None}")
-
-    # print(f"Reversed LL (new LL):  {llist.reverse()}")
-    # print(f"Reversed LL (inplace): {llist.reverse(inplace=True)}")
-    # print(f"Reversed LL (inplace): {llist.reverse(inplace=True)}")
-    # print(f"Sorted LL (inplace):   {llist.sort()}")
-
-    print(LinkedList().sort())
-    print(LinkedList().insert_from([2]).sort())
-    print(LinkedList().insert_from([1, 2]).sort())
-    print(LinkedList().insert_from([0, 1, 2]).sort())
-    print(LinkedList().insert_from([0, 2, 1]).sort())
-    print(LinkedList().insert_from([2, 1, 0]).sort())
-    print(LinkedList().insert_from([2, 0, 1]).sort())
-
-    print(LinkedList().merge_sorted(LinkedList()))
-    print(LinkedList().merge_sorted(2))
-    print(
-        LinkedList().merge_sorted(LinkedList().insert_from([5, 3, 1]).sort())
-    )
-    print(
-        LinkedList()
-        .insert_from([2, 0, 1])
-        .sort()
-        .merge_sorted(LinkedList().insert_from([5, 3, 1]).sort())
-    )
+    llist2 = LinkedList().insert_from([5, 0, 1, 2]).sort()
+    print(f"Second LL (sorted):    {llist2}")
+    llist.merge_sorted(llist2)
+    print(f"Merge sorted LL:       {llist}")

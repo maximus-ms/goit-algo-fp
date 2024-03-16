@@ -1,10 +1,38 @@
 # GoITNeo Algo FP
 
-## Task 1 Data Structures. Sorting. Working with Linked List
+## Task 1. Data Structures. Sorting. Working with Linked List
 To implement a Linked List, you need to:
  - write a function that implements reversing a Linked List by changing the references between nodes
  - develop a sorting algorithm for a LL, such as insertion sort or merge sort
  - write a function that merges two sorted LLs into one sorted list
+
+### Solution
+A class ```LinkedList``` is implemented in file LinkedList.py.
+#### List of supported methods:
+ - ```insert_at_beginning``` - add a node at the beginning
+ - ```insert_at_end``` - add node at the end
+ - ```insert_from``` - add nodes at the beginning from a list and return the LL
+ - ```insert_after``` - insert node after the given node
+ - ```delete_node``` - find and delete the given node
+ - ```search_node``` - find node
+ - ```reverse_inplace``` - reverse current LL inplace (without creation a new LL)
+ - ```reverse``` - reverse and return LL, create a new LL if ```inplace=False```
+ - ```sort``` - return current LL sorted inplace
+ - ```merge_sorted``` - add to current sorted LL another sorted LL and return current LL
+
+#### How to use
+```python
+from LinkedList import LinkedList
+
+llist = LinkedList()
+llist.insert_from([2,3,3,1,2,3,4])
+llist.sort()
+print(llist)  # [1, 2, 2, 3, 3, 3, 4]
+llist2 = LinkedList().insert_from([5, 0, 1, 2]).sort()
+print(llist2) # [0, 1, 2, 5]
+llist.merge_sorted(llist2)
+print(llist)  # [0, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
+```
 
 ## Task 2. Recursion. Creating a "Pythagoras Tree" Fractal Using Recursion
 Write a program in Python that uses recursion to create the "Pythagoras Tree" fractal. The program should visualize the "Pythagoras Tree" fractal, and the user should be able to specify the level of recursion.
