@@ -82,7 +82,7 @@ def find_all_distances(graph):
     pq = MinPriorityQueue(node_q)
     distances = {}
     while pq:
-        start = pq.pop()
+        start = pq.pop()[1]
         distances[start] = dijkstra_on_heap(graph, start)
     return distances
 

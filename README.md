@@ -24,14 +24,20 @@ A class ```LinkedList``` is implemented in file LinkedList.py.
 ```python
 from LinkedList import LinkedList
 
-llist = LinkedList()
-llist.insert_from([2,3,3,1,2,3,4])
-llist.sort()
-print(llist)  # [1, 2, 2, 3, 3, 3, 4]
-llist2 = LinkedList().insert_from([5, 0, 1, 2]).sort()
-print(llist2) # [0, 1, 2, 5]
-llist.merge_sorted(llist2)
-print(llist)  # [0, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
+LL1 = LinkedList()
+LL1.insert_from([2,3,3,1,2,3,4])
+LL1.sort()
+print(f"Sorted LL1: {LL1}")
+LL2 = LinkedList().insert_from([5, 0, 1, 2]).sort()
+print(f"Sorted LL2: {LL2}")
+LL1.merge_sorted(LL2)
+print(f"Merged LL:  {LL1}")
+```
+#### Output
+```
+Sorted LL1: [1, 2, 2, 3, 3, 3, 4]
+Sorted LL2: [0, 1, 2, 5]
+Merged LL:  [0, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
 ```
 
 ## Task 2. Recursion. Creating a "Pythagoras Tree" Fractal Using Recursion
@@ -74,7 +80,7 @@ Return:
 ```python
 import networkx as nx
 import pandas as pd
-from DijkstraOnHeap import *
+from DijkstraOnHeap import find_all_distances
 
 graph = nx.Graph()
 graph.add_nodes_from(["A", "B", "C", "D"])
@@ -153,12 +159,14 @@ draw_tree(root)
 Using this code, build a function that visualizes a binary heap.
 
 ### Solution
-The function ```draw_heap``` is implemented in file ```HeapTree.py```.
+The function ```build_tree``` is implemented as a method of class ```HeapTree```.\
+The result can be shown with method ```show```.
 #### Usage
 ```python
+from numpy import random
 from HeapTree import HeapTree
 
-ht = HeapTree(random.randint(99, size=26))
+ht = HeapTree(random.randint(99, size=24))
 print(f"HeapTree: {ht}")
 ht.show()
 ```
