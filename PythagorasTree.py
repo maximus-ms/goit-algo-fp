@@ -5,10 +5,12 @@ DEFAULT_N = 6
 DEFAULT_SIZE = 550
 color = 0
 
+
 def pythagoras_tree_turtle(n=DEFAULT_N, l=DEFAULT_SIZE):
-    color_increment = 0xff // (n+2)
+    color_increment = 0xFF // (n + 2)
     global color
     color = color_increment * 2
+
     def pythagoras_tree(t, l, n):
         global color
         t.color(f"#00{color:02x}00")
@@ -35,6 +37,7 @@ def pythagoras_tree_turtle(n=DEFAULT_N, l=DEFAULT_SIZE):
     t.left(90)
     t.pendown()
     pythagoras_tree(t, l / 3, n)
+
 
 def main():
     if len(sys.argv) < 2:

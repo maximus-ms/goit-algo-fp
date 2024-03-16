@@ -39,6 +39,18 @@ Write a program in Python that uses recursion to create the "Pythagoras Tree" fr
 
 ![Pythagoras Tree](data/PythagorasTree.png)
 
+### Solution
+"Pythagoras Tree" is implemented in file ```PythagorasTree.py```.
+The script can get one optional input parameter ```n``` (default value is 6). This parameter defines a recursion level and as result a complexity of the tree.
+
+An additional feature: the color of the three is changed gradually from dark-green (base) to light-green (leafs).
+#### Usage:
+```python
+python PythagorasTree.py 10
+```
+#### Result:
+![Pythagoras Tree my result](data/PythagorasTree_result.png)
+
 ## Task 3. Trees, Dijkstra's Algorithm
 Develop Dijkstra's algorithm to find the shortest paths in a weighted graph using a binary heap. The task includes creating a graph, using a heap to optimize vertex selection, and calculating the shortest paths from the starting vertex to all others.
 
