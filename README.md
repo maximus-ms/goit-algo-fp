@@ -171,14 +171,53 @@ print(f"HeapTree: {ht}")
 ht.show()
 ```
 #### Result
+```
+HeapTree: [2, 32, 2, 52, 35, 53, 67, 57, 70, 37, 63, 53, 72, 68, 98, 60, 95, 71, 75, 48, 81, 84, 86, 60]
+```
 ![Heap Visualizer](data/HeapVisualizer.png)
 
 ## Task 5. Visualization of Binary Tree Traversal
 Using the code from Task 4 to build a binary tree, you need to create a Python program that visualizes tree traversals: in-depth and in width.
 It should display each step in nodes with different colors, using the RGB 16-bit system (example #1296F0). Node colors should vary from dark to light shades, depending on the traversal sequence. Each node when visited should receive a unique color that visually represents the traversal order.
 
+### Solution
+Let's take the same class ```HeapTree``` and implement methods ```dfs``` and ```bfs```. These functions go through the heap tree and gradually change the color of each node from dark to light.
+#### Usage dfs
+```python
+from numpy import random
+from HeapTree import HeapTree
+
+ht = HeapTree(random.randint(99, size=20))
+print(f"HeapTree: {ht}")
+print(f"DFS order: {ht.dfs()}")
+ht.show()
+```
+#### Results
+```
+HeapTree: [5, 6, 20, 28, 28, 24, 45, 86, 53, 59, 34, 53, 44, 65, 92, 89, 88, 98, 73, 79]
+DFS order: [5, 6, 28, 86, 89, 88, 53, 98, 73, 28, 59, 79, 34, 20, 24, 53, 44, 45, 65, 92]
+```
+![Heap Visualizer DFS](data/HeapVisualizerDfs.png)
+
+#### Usage bfs
+```python
+from numpy import random
+from HeapTree import HeapTree
+
+ht = HeapTree(random.randint(99, size=22))
+print(f"HeapTree: {ht}")
+print(f"DBS order: {ht.bfs()}")
+ht.show()
+```
+#### Results
+```
+HeapTree: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
+DBS order: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
+```
+![Heap Visualizer DFS](data/HeapVisualizerBfs.png)
+
 ## Task 6: Greedy Algorithms and Dynamic Programming
-You need to write a Python program that uses two approaches - a greedy algorithm and dynamic programming algorithm to solve the problem of selecting food with the highest total calories within a limited budget.
+Write a Python program that uses two approaches - a greedy algorithm and dynamic programming algorithm to solve the problem of selecting food with the highest total calories within a limited budget.
 Each type of food has a specified cost and calorie content. Food data is represented as a dictionary, where the key is the name of the dish, and the value is a dictionary with the cost and calorie content.
 ```python
 items = {

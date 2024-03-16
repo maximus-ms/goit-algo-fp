@@ -2,6 +2,7 @@ import uuid
 import networkx as nx
 import matplotlib.pyplot as plt
 from numpy import random
+from collections import deque
 
 from DijkstraOnHeap import MinPriorityQueue
 
@@ -72,11 +73,11 @@ class HeapTree(MinPriorityQueue):
         self.root = HeapTree.Node(self.q[0])
         tree_add_node(self.root, 0)
 
-        self._build_graph()
-
     def show(self):
-        if not self.graph:
+        if not self.root:
             self.build_tree()
+        if not self.graph:
+            self._build_graph()
         colors = [node[1]["color"] for node in self.graph.nodes(data=True)]
         labels = {
             node[0]: node[1]["label"] for node in self.graph.nodes(data=True)
@@ -93,6 +94,44 @@ class HeapTree(MinPriorityQueue):
         )
         plt.show()
 
+    def dfs(self):
+        if not self.root:
+            self.build_tree()
+        color_increment = 0xFF // (len(self.q) + 12)
+        color = color_increment * 12
+        visit_order = []
+        q = [self.root]
+        while q:
+            color += color_increment
+            cur = q.pop()
+            cur.color = f"#00{color:02x}{color:02x}"
+            visit_order.append(cur.val)
+            if cur.right:
+                q.append(cur.right)
+            if cur.left:
+                q.append(cur.left)
+        self.graph = None
+        return visit_order
+
+    def bfs(self):
+        if not self.root:
+            self.build_tree()
+        color_increment = 0xFF // (len(self.q) + 12)
+        color = color_increment * 12
+        visit_order = []
+        q = deque([self.root])
+        while q:
+            color += color_increment
+            cur = q.popleft()
+            cur.color = f"#00{color:02x}{color:02x}"
+            visit_order.append(cur.val)
+            if cur.left:
+                q.append(cur.left)
+            if cur.right:
+                q.append(cur.right)
+        self.graph = None
+        return visit_order
+
     def push(self, priority_data):
         self._reset_tree()
         super().push(priority_data)
@@ -107,14 +146,26 @@ class HeapTree(MinPriorityQueue):
 
 
 if __name__ == "__main__":
-    data = list(random.randint(50, size=26))
-    ht = HeapTree(data)
-    print(ht)
-    ht.show()
-    print(f"Pop: {ht.pop()}")
-    print(ht)
-    ht.show()
-    print("Push '45' to the heap tree")
-    ht.push(45)
-    print(ht)
-    ht.show()
+    TEST_Heap_tree_show = 0
+    TEST_Heap_tree_dfs = 1
+    TEST_Heap_tree_bfs = 1
+    if TEST_Heap_tree_show:
+        # TEST: Heap tree show
+        ht = HeapTree(random.randint(50, size=26))
+        print(ht)
+        ht.show()
+        print(f"Pop: {ht.pop()}")
+        print(ht)
+        ht.show()
+        print("Push '45' to the heap tree")
+        ht.push(45)
+        print(ht)
+        ht.show()
+    if TEST_Heap_tree_dfs:
+        ht = HeapTree(random.randint(50, size=26))
+        print(f"DFS order: {ht.dfs()}")
+        ht.show()
+    if TEST_Heap_tree_bfs:
+        ht = HeapTree(random.randint(50, size=26))
+        print(f"BFS order: {ht.bfs()}")
+        ht.show()
