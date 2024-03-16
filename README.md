@@ -148,9 +148,23 @@ root.right.left = Node(3)
 draw_tree(root)
 ```
 
-![Pythagoras Tree](data/BinaryHeap.png)
+![Binary Heap](data/BinaryHeap.png)
 
 Using this code, build a function that visualizes a binary heap.
+
+### Solution
+The function ```draw_heap``` is implemented in file ```HeapVisualizer.py```.
+#### Usage
+```python
+from HeapVisualizer import draw_heap
+
+data = list(random.randint(99, size=26))
+heapq.heapify(data)
+print(f"Heap: {data}")
+draw_heap(data)
+```
+#### Result
+![Heap Visualizer](data/HeapVisualizer.png)
 
 ## Task 5. Visualization of Binary Tree Traversal
 Using the code from Task 4 to build a binary tree, you need to create a Python program that visualizes tree traversals: in-depth and in width.
