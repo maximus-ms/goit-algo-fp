@@ -3,6 +3,7 @@ import networkx as nx
 import pandas as pd
 from UkraineRoads import UkraineRoads
 
+
 class MinPriorityQueue:
     def __init__(self, items: list = None):
         self.q = []
@@ -11,7 +12,9 @@ class MinPriorityQueue:
                 q = list(items)
                 heapq.heapify(q)
             except Exception:
-                print(f"Input type {type(items)} cannot be converted to list. MinPriorityQueue is created with empty queue!")
+                print(
+                    f"Input type {type(items)} cannot be converted to list. MinPriorityQueue is created with empty queue!"
+                )
             else:
                 self.q = q
 
@@ -30,6 +33,7 @@ class MinPriorityQueue:
     def __str__(self) -> str:
         return str(self.q)
 
+
 def dijkstra_on_heap(graph, start):
     """
     Dijkstra's algorithm
@@ -40,20 +44,21 @@ def dijkstra_on_heap(graph, start):
     Return:
         dictionary: minimal distances from the 'start' vertex to each vertex in the graph
     """
-    distances = {vertex: [float('infinity'), vertex] for vertex in graph}
+    distances = {vertex: [float("infinity"), vertex] for vertex in graph}
     distances[start][0] = 0
     unvisited = MinPriorityQueue(distances.values())
 
     while unvisited:
         unvisited.update()
         cur_vertex = unvisited.pop()
-        if distances[cur_vertex][0] == float('infinity'):
+        if distances[cur_vertex][0] == float("infinity"):
             break
         for neighbor, attr in graph[cur_vertex].items():
             distance = distances[cur_vertex][0] + attr["weight"]
             if distance < distances[neighbor][0]:
                 distances[neighbor][0] = distance
-    return { vertex : item[0] for vertex, item in distances.items()}
+    return {vertex: item[0] for vertex, item in distances.items()}
+
 
 def find_all_distances(graph):
     """
@@ -64,11 +69,13 @@ def find_all_distances(graph):
         dictionary: minimal distances from each vertex to each vertex in the graph
     """
     if not isinstance(graph, nx.Graph):
-        raise Exception(f"Expected an object of networkx class, provided {type(graph)}")
+        raise Exception(
+            f"Expected an object of networkx class, provided {type(graph)}"
+        )
 
     # Get order of nodes based on Centrality coefficient
     centrality = nx.degree_centrality(graph)
-    node_q = [ (-v, node) for node, v in centrality.items() ]
+    node_q = [(-v, node) for node, v in centrality.items()]
     pq = MinPriorityQueue(node_q)
     distances = {}
     while pq:
@@ -92,17 +99,9 @@ if __name__ == "__main__":
         for c in D1.keys():
             if D1[c] != D2[c]:
                 print(f"{c:<16} {D1[c]:>3} != {D2[c]:<3}")
-                cnt+=1
+                cnt += 1
 
     if cnt == 0:
         print("All distances a correct")
     # Let's print distances from Kyiv
     print(pd.DataFrame(distances)["Київ"])
-
-
-
-
-
-
-
-
