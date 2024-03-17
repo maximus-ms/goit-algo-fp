@@ -1,4 +1,5 @@
 # GoITNeo Algo FP
+**Note**: all tasks and solutions are also described in Jupiter document ```FinalProject_all_in_one.ipynb```
 
 ## Task 1. Data Structures. Sorting. Working with Linked List
 To implement a Linked List, you need to:
@@ -324,3 +325,62 @@ The table of probabilities of sums when rolling two dice looks as follows:
 | 12  | 2.78%  (1/36) |
 
 Compare the results obtained using the Monte Carlo method with the analytical calculations provided in the table above.
+
+### Solution
+We have two functions ```dice_rolls_try``` and ```calc_monte_carlo_probabilities``` which are located in file ```MonteCarlo.py```.
+Running Monte Carlo method for different number of tries (1000, 10000, 100000) we can see different results.
+#### Output
+```
+Monte Carlo, 1000 iterations
+|----------------------------------------|
+| Result | Math prob |  MC prob  | Error |
+|--------|-----------|-----------|-------|
+|   2    |   2.78    |    3.0    | 0.220 |
+|   3    |   5.56    |    5.7    | 0.140 |
+|   4    |   8.33    |    6.7    | 1.630 |
+|   5    |   11.11   |   12.6    | 1.490 |
+|   6    |   13.89   |   13.0    | 0.890 |
+|   7    |   16.67   |   16.6    | 0.070 |
+|   8    |   13.89   |   14.7    | 0.810 |
+|   9    |   11.11   |   11.0    | 0.110 |
+|   10   |   8.33    |    8.4    | 0.070 |
+|   11   |   5.56    |    5.9    | 0.340 |
+|   12   |   2.78    |    2.4    | 0.380 |
+
+Monte Carlo, 10000 iterations
+|----------------------------------------|
+| Result | Math prob |  MC prob  | Error |
+|--------|-----------|-----------|-------|
+|   2    |   2.78    |   2.81    | 0.030 |
+|   3    |   5.56    |   5.84    | 0.280 |
+|   4    |   8.33    |   8.04    | 0.290 |
+|   5    |   11.11   |   10.61   | 0.500 |
+|   6    |   13.89   |   14.76   | 0.870 |
+|   7    |   16.67   |   16.42   | 0.250 |
+|   8    |   13.89   |   14.1    | 0.210 |
+|   9    |   11.11   |   10.75   | 0.360 |
+|   10   |   8.33    |   8.57    | 0.240 |
+|   11   |   5.56    |   5.16    | 0.400 |
+|   12   |   2.78    |   2.94    | 0.160 |
+
+Monte Carlo, 100000 iterations
+|----------------------------------------|
+| Result | Math prob |  MC prob  | Error |
+|--------|-----------|-----------|-------|
+|   2    |   2.78    |   2.756   | 0.024 |
+|   3    |   5.56    |   5.606   | 0.046 |
+|   4    |   8.33    |   8.42    | 0.090 |
+|   5    |   11.11   |   10.99   | 0.120 |
+|   6    |   13.89   |  13.933   | 0.043 |
+|   7    |   16.67   |  16.545   | 0.125 |
+|   8    |   13.89   |  13.994   | 0.104 |
+|   9    |   11.11   |  11.162   | 0.052 |
+|   10   |   8.33    |   8.213   | 0.117 |
+|   11   |   5.56    |   5.55    | 0.010 |
+|   12   |   2.78    |   2.831   | 0.051 |
+```
+#### Conclusions
+The Monte Carlo method is a great method to solve different types of tasks with some probability level. The quality of results can be improved by increasing the number of tries.
+
+#
+### Thank you!
