@@ -232,6 +232,77 @@ items = {
 Write the function ```greedy_algorithm``` for the greedy algorithm, which selects dishes maximizing the calorie-to-cost ratio without exceeding the specified budget.
 To implement the dynamic programming algorithm, create the function ```dynamic_programming```, which calculates the optimal set of dishes to maximize calorie intake within a given budget.
 
+### Solution
+Functions ```greedy_algorithm``` and ```dynamic_programming``` are implemented in file ```GreedyVsDynamic.py```.
+Let's compare results of both algorithms and print only different results.
+#### Usage
+```bash
+python ./GreedyVsDynamic.py
+```
+#### Output
+```
+Total cost: 170
+Budget: 25
+Greedy alg:   320 (cola, pepsi)
+Dynamic prog: 350 (potato)
+Budget: 30
+Greedy alg:   320 (cola, pepsi)
+Dynamic prog: 350 (potato)
+Budget: 35
+Greedy alg:   320 (cola, pepsi)
+Dynamic prog: 450 (pepsi, potato)
+Budget: 70
+Greedy alg:   670 (cola, potato, pepsi)
+Dynamic prog: 770 (hot-dog, cola, potato)
+Budget: 75
+Greedy alg:   670 (cola, potato, pepsi)
+Dynamic prog: 770 (hot-dog, cola, potato)
+Budget: 90
+Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+Dynamic prog: 920 (hamburger, pepsi, cola, potato)
+Budget: 95
+Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+Dynamic prog: 920 (hamburger, pepsi, cola, potato)
+Budget: 100
+Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+Dynamic prog: 970 (pizza, pepsi, cola, potato)
+Budget: 105
+Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+Dynamic prog: 970 (pizza, pepsi, cola, potato)
+Budget: 110
+Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+Dynamic prog: 1020 (hamburger, hot-dog, cola, potato)
+Budget: 115
+Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+Dynamic prog: 1020 (hamburger, hot-dog, cola, potato)
+Budget: 130
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1170 (pizza, hot-dog, pepsi, cola, potato)
+Budget: 135
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1170 (pizza, hot-dog, pepsi, cola, potato)
+Budget: 140
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+Budget: 145
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+Budget: 150
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+Budget: 155
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+Budget: 160
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1320 (pizza, hamburger, hot-dog, cola, potato)
+Budget: 165
+Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+Dynamic prog: 1320 (pizza, hamburger, hot-dog, cola, potato)
+```
+### Conclusions
+As we can see greedy algorithms cannot give us the best result, while the solution based on dynamic programming gives the best result and can be faster for multiple calls (if we keep the solution table).
+
 ## Task 7: Using the Monte Carlo Method
 Write a Python program that simulates a large number of dice rolls, calculates the sums of the numbers on the dice, and determines the probability of each possible sum.
 Create a simulation where two dice are rolled a large number of times. For each roll, determine the sum of the numbers on both dice. Count how many times each possible sum (from 2 to 12) appears in the simulation. Using this data, calculate the probability of each sum.
