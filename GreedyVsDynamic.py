@@ -69,7 +69,6 @@ if __name__ == "__main__":
     for budget in range(5, total_cost, 5):
         r1 = greedy_algorithm(budget)
         r2 = dynamic_programming(budget)
-        if r2[0] != r1[0]:
-            print(f"Budget: {budget}")
-            print(f"Greedy alg:   {r1[0]} ({', '.join(r1[1])})")
-            print(f"Dynamic prog: {r2[0]} ({', '.join(r2[1])})")
+        print(f"Budget: {budget}")
+        print(f" Greedy alg:   {r1[0]} ({', '.join(r1[1])})")
+        print(f" Dynamic prog: {r2[0]} ({', '.join(r2[1])})")

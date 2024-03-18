@@ -160,62 +160,29 @@ draw_tree(root)
 Using this code, build a function that visualizes a binary heap.
 
 ### Solution
-The function ```build_tree``` is implemented as a method of class ```HeapTree```.\
-The result can be shown with method ```show```.
-#### Usage
-```python
-from numpy import random
-from HeapTree import HeapTree
-
-ht = HeapTree(random.randint(99, size=24))
-print(f"HeapTree: {ht}")
-ht.show()
-```
+The function ```build_heap_tree``` is implemented in file ```BuildHeapTree.py```.
 #### Result
 ```
-HeapTree: [2, 32, 2, 52, 35, 53, 67, 57, 70, 37, 63, 53, 72, 68, 98, 60, 95, 71, 75, 48, 81, 84, 86, 60]
+Heap tree list: [1, 5, 2, 5, 7, 4, 9, 12, 11, 8, 9, 5]
 ```
-![Heap Visualizer](data/HeapVisualizer.png)
+![Build Heap Tree](data/BuildHeapTree.png)
 
 ## Task 5. Visualization of Binary Tree Traversal
 Using the code from Task 4 to build a binary tree, you need to create a Python program that visualizes tree traversals: in-depth and in width.
 It should display each step in nodes with different colors, using the RGB 16-bit system (example #1296F0). Node colors should vary from dark to light shades, depending on the traversal sequence. Each node when visited should receive a unique color that visually represents the traversal order.
 
 ### Solution
-Let's take the same class ```HeapTree``` and implement methods ```dfs``` and ```bfs```. These functions go through the heap tree and gradually change the color of each node from dark to light.
-#### Usage dfs
-```python
-from numpy import random
-from HeapTree import HeapTree
-
-ht = HeapTree(random.randint(99, size=20))
-print(f"HeapTree: {ht}")
-print(f"DFS order: {ht.dfs()}")
-ht.show()
-```
+Let's take the code from previous task ```draw_tree``` and ```build_heap_tree``` and implement functions ```dfs``` and ```bfs```. These functions go through the heap tree and gradually change the color of each node from dark to light.
 #### Results
 ```
-HeapTree: [5, 6, 20, 28, 28, 24, 45, 86, 53, 59, 34, 53, 44, 65, 92, 89, 88, 98, 73, 79]
-DFS order: [5, 6, 28, 86, 89, 88, 53, 98, 73, 28, 59, 79, 34, 20, 24, 53, 44, 45, 65, 92]
+Heap tree list: [1, 5, 2, 5, 7, 4, 9, 12, 11, 8, 9, 5]
+DFS order: [1, 5, 5, 12, 11, 7, 8, 9, 2, 4, 5, 9]
 ```
-![Heap Visualizer DFS](data/HeapVisualizerDfs.png)
-
-#### Usage bfs
-```python
-from numpy import random
-from HeapTree import HeapTree
-
-ht = HeapTree(random.randint(99, size=22))
-print(f"HeapTree: {ht}")
-print(f"BFS order: {ht.bfs()}")
-ht.show()
+![Heap Visualizer DFS](data/ColorHeapTreeDFS.png)
 ```
-#### Results
+BFS order: [1, 5, 2, 5, 7, 4, 9, 12, 11, 8, 9, 5]
 ```
-HeapTree: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
-BFS order: [0, 9, 2, 10, 26, 35, 18, 22, 50, 70, 44, 47, 55, 89, 35, 73, 38, 94, 63, 77, 94, 71]
-```
-![Heap Visualizer DFS](data/HeapVisualizerBfs.png)
+![Heap Visualizer BFS](data/ColorHeapTreeBFS.png)
 
 ## Task 6: Greedy Algorithms and Dynamic Programming
 Write a Python program that uses two approaches - a greedy algorithm and dynamic programming algorithm to solve the problem of selecting food with the highest total calories within a limited budget.
@@ -235,7 +202,7 @@ To implement the dynamic programming algorithm, create the function ```dynamic_p
 
 ### Solution
 Functions ```greedy_algorithm``` and ```dynamic_programming``` are implemented in file ```GreedyVsDynamic.py```.
-Let's compare results of both algorithms and print only different results.
+Let's compare results of both algorithms and print results.
 #### Usage
 ```bash
 python ./GreedyVsDynamic.py
@@ -243,63 +210,105 @@ python ./GreedyVsDynamic.py
 #### Output
 ```
 Total cost: 170
+Budget: 5
+ Greedy alg:   0 ()
+ Dynamic prog: 0 ()
+Budget: 10
+ Greedy alg:   100 (pepsi)
+ Dynamic prog: 100 (pepsi)
+Budget: 15
+ Greedy alg:   220 (cola)
+ Dynamic prog: 220 (cola)
+Budget: 20
+ Greedy alg:   220 (cola)
+ Dynamic prog: 220 (cola)
 Budget: 25
-Greedy alg:   320 (cola, pepsi)
-Dynamic prog: 350 (potato)
+ Greedy alg:   320 (cola, pepsi)
+ Dynamic prog: 350 (potato)
 Budget: 30
-Greedy alg:   320 (cola, pepsi)
-Dynamic prog: 350 (potato)
+ Greedy alg:   320 (cola, pepsi)
+ Dynamic prog: 350 (potato)
 Budget: 35
-Greedy alg:   320 (cola, pepsi)
-Dynamic prog: 450 (pepsi, potato)
+ Greedy alg:   320 (cola, pepsi)
+ Dynamic prog: 450 (pepsi, potato)
+Budget: 40
+ Greedy alg:   570 (cola, potato)
+ Dynamic prog: 570 (cola, potato)
+Budget: 45
+ Greedy alg:   570 (cola, potato)
+ Dynamic prog: 570 (cola, potato)
+Budget: 50
+ Greedy alg:   670 (cola, potato, pepsi)
+ Dynamic prog: 670 (pepsi, cola, potato)
+Budget: 55
+ Greedy alg:   670 (cola, potato, pepsi)
+ Dynamic prog: 670 (pepsi, cola, potato)
+Budget: 60
+ Greedy alg:   670 (cola, potato, pepsi)
+ Dynamic prog: 670 (pepsi, cola, potato)
+Budget: 65
+ Greedy alg:   670 (cola, potato, pepsi)
+ Dynamic prog: 670 (pepsi, cola, potato)
 Budget: 70
-Greedy alg:   670 (cola, potato, pepsi)
-Dynamic prog: 770 (hot-dog, cola, potato)
+ Greedy alg:   670 (cola, potato, pepsi)
+ Dynamic prog: 770 (hot-dog, cola, potato)
 Budget: 75
-Greedy alg:   670 (cola, potato, pepsi)
-Dynamic prog: 770 (hot-dog, cola, potato)
+ Greedy alg:   670 (cola, potato, pepsi)
+ Dynamic prog: 770 (hot-dog, cola, potato)
+Budget: 80
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 870 (hot-dog, pepsi, cola, potato)
+Budget: 85
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 870 (hot-dog, pepsi, cola, potato)
 Budget: 90
-Greedy alg:   870 (cola, potato, pepsi, hot-dog)
-Dynamic prog: 920 (hamburger, pepsi, cola, potato)
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 920 (hamburger, pepsi, cola, potato)
 Budget: 95
-Greedy alg:   870 (cola, potato, pepsi, hot-dog)
-Dynamic prog: 920 (hamburger, pepsi, cola, potato)
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 920 (hamburger, pepsi, cola, potato)
 Budget: 100
-Greedy alg:   870 (cola, potato, pepsi, hot-dog)
-Dynamic prog: 970 (pizza, pepsi, cola, potato)
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 970 (pizza, pepsi, cola, potato)
 Budget: 105
-Greedy alg:   870 (cola, potato, pepsi, hot-dog)
-Dynamic prog: 970 (pizza, pepsi, cola, potato)
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 970 (pizza, pepsi, cola, potato)
 Budget: 110
-Greedy alg:   870 (cola, potato, pepsi, hot-dog)
-Dynamic prog: 1020 (hamburger, hot-dog, cola, potato)
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 1020 (hamburger, hot-dog, cola, potato)
 Budget: 115
-Greedy alg:   870 (cola, potato, pepsi, hot-dog)
-Dynamic prog: 1020 (hamburger, hot-dog, cola, potato)
+ Greedy alg:   870 (cola, potato, pepsi, hot-dog)
+ Dynamic prog: 1020 (hamburger, hot-dog, cola, potato)
+Budget: 120
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1120 (hamburger, hot-dog, pepsi, cola, potato)
+Budget: 125
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1120 (hamburger, hot-dog, pepsi, cola, potato)
 Budget: 130
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1170 (pizza, hot-dog, pepsi, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1170 (pizza, hot-dog, pepsi, cola, potato)
 Budget: 135
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1170 (pizza, hot-dog, pepsi, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1170 (pizza, hot-dog, pepsi, cola, potato)
 Budget: 140
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
 Budget: 145
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
 Budget: 150
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
 Budget: 155
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1220 (pizza, hamburger, pepsi, cola, potato)
 Budget: 160
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1320 (pizza, hamburger, hot-dog, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1320 (pizza, hamburger, hot-dog, cola, potato)
 Budget: 165
-Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
-Dynamic prog: 1320 (pizza, hamburger, hot-dog, cola, potato)
+ Greedy alg:   1120 (cola, potato, pepsi, hot-dog, hamburger)
+ Dynamic prog: 1320 (pizza, hamburger, hot-dog, cola, potato)
 ```
 ### Conclusions
 As we can see greedy algorithms cannot give us the best result, while the solution based on dynamic programming gives the best result and can be faster for multiple calls (if we keep the solution table).
